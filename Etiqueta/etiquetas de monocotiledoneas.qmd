@@ -1,0 +1,71 @@
+---
+title: "Etiquetas de Muestrearo"
+author: "Grupo 2"
+format: html
+---
+
+```{r}
+source("https://inkaverse.com/setup.r")
+url <- "https://docs.google.com/spreadsheets/d/1A8R0JOf8tPM5nhKWqUCX2ZuVOsZ9ifXfC_JrxxH2fH0/edit?gid=0#gid=0"
+
+gs <- as_sheets_id(url)
+fb <- range_read(gs, sheet = "fb")
+
+```
+
+```{r}
+library(huito)
+
+font <- c("Permanent Marker", "Tillana", "Courgette")
+
+huito_fonts(font)
+
+label <- fb %>%
+  label_layout(size = c(4 , 4)
+               , border_color = "blue"
+               , border_width = 1
+              )  %>%
+  include_image(value = "https://www.untrm.edu.pe/assets/images/untrmazul.png"
+                , size = c(1.5, 1.5)
+                , position = c(1, 3.5)
+                ) %>% 
+    include_image(value = "Etiqueta/logo_fica.jpg"
+                , size = c(0.5, 0.5)
+                , position = c( 2.4, 3.5)
+                ) %>% 
+    include_image(value = "Etiqueta/1121.png"
+                , size = c(1.4, 1.4)
+                , position = c(3.4, 3.5)
+                ) %>%
+  include_text(value = "nc"
+             , position = c(1.8,2.8 )
+             , size = 8
+             , color = "#5b1f00"
+             , font[1]
+             ) %>% 
+  include_text(value = "nombre comun"
+             , position = c(2.3,2.4)
+             , size = 7
+             , color = "forestgreen"
+             , font[1]
+             ) %>% 
+  include_text(value = "N"
+             , position = c(0.8,1.2)
+             , size = 7
+             , color = "black"
+             , font[1]
+             , angle = 90
+             ) %>% 
+ include_barcode(value = "qr"
+             , size =c(2, 2) 
+             , position = c(2,1.1)
+            )
+             
+
+  
+label %>% label_print()
+
+label %>%
+  label_print(mode = "complete", filename = "Etiqueta/etiquetas_HER", nlabels = 21)
+```
+
