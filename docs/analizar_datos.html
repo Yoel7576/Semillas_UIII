@@ -175,13 +175,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="content.html">
-                <span class="menu-text">Resultados y Discusiones</span>
+              <a class="nav-link" href="analizar_datos.html"> 
+                <span class="menu-text">Análisis de datos</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="analizar_datos.html"> 
-                <span class="menu-text">Análisis de datos</span>
+              <a class="nav-link" href="content.html">
+                <span class="menu-text">Resultados y Discusiones</span>
               </a>
             </li>
             <li class="nav-item">
@@ -212,12 +212,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
       <nav id="TOC" role="doc-toc" class="toc-active">
-        <h2 id="toc-title">Table of contents</h2>
+        <h2 id="toc-title">Tabla de contenido</h2>
         <ul>
           <li><a href="#cargar-librerías" id="toc-cargar-librerías" class="nav-link active" data-scroll-target="#cargar-librerías">
-            <span class="header-section-number">1</span> Cargar librerías</a></li>
+            <span class="header-section-number">1</span> Cargar librerías</a>
+          </li>
           <li>
-          <a href="#cargar-datos" id="toc-cargar-datos" class="nav-link" data-scroll-target="#cargar-datos">
+            <a href="#cargar-datos" id="toc-cargar-datos" class="nav-link" data-scroll-target="#cargar-datos">
             <span class="header-section-number">2</span> Cargar datos
           </a>
           </li>
@@ -226,87 +227,163 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
               <span class="header-section-number">3</span> Resumen de germinación
             </a>
           </li>
-          <li><a href="#objetivo-específico-1" id="toc-objetivo-específico-1" class="nav-link" data-scroll-target="#objetivo-específico-1"><span class="header-section-number">4</span> Objetivo específico 1</a>
+          <li>
+            <a href="#objetivo-específico-1" id="toc-objetivo-específico-1" class="nav-link" data-scroll-target="#objetivo-específico-1"><span class="header-section-number">4</span> Objetivo específico 1</a>
             <ul class="collapse">
-  <li><a href="#porcentaje-de-germinación-grp" id="toc-porcentaje-de-germinación-grp" class="nav-link" data-scroll-target="#porcentaje-de-germinación-grp"><span class="header-section-number">4.1</span> Porcentaje de germinación (grp)</a>
-  <ul class="collapse">
-  <li><a href="#anova-de-grp." id="toc-anova-de-grp." class="nav-link" data-scroll-target="#anova-de-grp."><span class="header-section-number">4.1.1</span> ANOVA de grp.</a></li>
-  <li><a href="#prueba-de-comparación-de-medias-por-cada-factor" id="toc-prueba-de-comparación-de-medias-por-cada-factor" class="nav-link" data-scroll-target="#prueba-de-comparación-de-medias-por-cada-factor"><span class="header-section-number">4.1.2</span> Prueba de comparación de medias por cada factor</a></li>
-  <li><a href="#tabla-de-resultados" id="toc-tabla-de-resultados" class="nav-link" data-scroll-target="#tabla-de-resultados"><span class="header-section-number">4.1.3</span> Tabla de resultados</a></li>
-  <li><a href="#gráfico-de-barras-de-porcentage-de-germinación" id="toc-gráfico-de-barras-de-porcentage-de-germinación" class="nav-link" data-scroll-target="#gráfico-de-barras-de-porcentage-de-germinación"><span class="header-section-number">4.1.4</span> Gráfico de barras de porcentage de germinación</a></li>
-  </ul></li>
-  <li><a href="#tiempo-medio-de-germinación-mgt" id="toc-tiempo-medio-de-germinación-mgt" class="nav-link" data-scroll-target="#tiempo-medio-de-germinación-mgt"><span class="header-section-number">4.2</span> Tiempo medio de germinación (mgt)</a>
-  <ul class="collapse">
-  <li><a href="#anova-para-mgt" id="toc-anova-para-mgt" class="nav-link" data-scroll-target="#anova-para-mgt"><span class="header-section-number">4.2.1</span> ANOVA para mgt</a></li>
-  <li><a href="#comparación-de-medias" id="toc-comparación-de-medias" class="nav-link" data-scroll-target="#comparación-de-medias"><span class="header-section-number">4.2.2</span> Comparación de medias</a></li>
-  <li><a href="#tabla-de-resultados-1" id="toc-tabla-de-resultados-1" class="nav-link" data-scroll-target="#tabla-de-resultados-1"><span class="header-section-number">4.2.3</span> Tabla de resultados</a></li>
-  <li><a href="#gráfico-de-barras" id="toc-gráfico-de-barras" class="nav-link" data-scroll-target="#gráfico-de-barras"><span class="header-section-number">4.2.4</span> Gráfico de barras</a></li>
-  </ul></li>
-  <li><a href="#índice-de-sincronización-syn" id="toc-índice-de-sincronización-syn" class="nav-link" data-scroll-target="#índice-de-sincronización-syn"><span class="header-section-number">4.3</span> Índice de sincronización (syn)</a>
-  <ul class="collapse">
-  <li><a href="#anova-para-syn" id="toc-anova-para-syn" class="nav-link" data-scroll-target="#anova-para-syn"><span class="header-section-number">4.3.1</span> ANOVA para syn</a></li>
-  <li><a href="#comparación-de-medias-1" id="toc-comparación-de-medias-1" class="nav-link" data-scroll-target="#comparación-de-medias-1"><span class="header-section-number">4.3.2</span> Comparación de medias</a></li>
-  <li><a href="#tabla-de-resultados-2" id="toc-tabla-de-resultados-2" class="nav-link" data-scroll-target="#tabla-de-resultados-2"><span class="header-section-number">4.3.3</span> Tabla de resultados</a></li>
-  <li><a href="#gráfico-de-barras-1" id="toc-gráfico-de-barras-1" class="nav-link" data-scroll-target="#gráfico-de-barras-1"><span class="header-section-number">4.3.4</span> Gráfico de barras</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#objetivo-específico-2" id="toc-objetivo-específico-2" class="nav-link" data-scroll-target="#objetivo-específico-2"><span class="header-section-number">5</span> Objetivo específico 2</a>
-  <ul class="collapse">
-  <li><a href="#preparar-tablas-de-medias" id="toc-preparar-tablas-de-medias" class="nav-link" data-scroll-target="#preparar-tablas-de-medias"><span class="header-section-number">5.1</span> Preparar tablas de medias</a>
-  <ul class="collapse">
-  <li><a href="#grp-porcentaje-de-germinación" id="toc-grp-porcentaje-de-germinación" class="nav-link" data-scroll-target="#grp-porcentaje-de-germinación"><span class="header-section-number">5.1.1</span> GRP: porcentaje de germinación</a></li>
-  <li><a href="#mgt-tiempo-medio-de-germinación" id="toc-mgt-tiempo-medio-de-germinación" class="nav-link" data-scroll-target="#mgt-tiempo-medio-de-germinación"><span class="header-section-number">5.1.2</span> MGT: tiempo medio de germinación</a></li>
-  <li><a href="#syn-índice-de-sincronización" id="toc-syn-índice-de-sincronización" class="nav-link" data-scroll-target="#syn-índice-de-sincronización"><span class="header-section-number">5.1.3</span> SYN: índice de sincronización</a></li>
-  <li><a href="#unir-todas-las-tablas" id="toc-unir-todas-las-tablas" class="nav-link" data-scroll-target="#unir-todas-las-tablas"><span class="header-section-number">5.1.4</span> Unir todas las tablas</a></li>
-  <li><a href="#agregar-columna-de-posición-adaptativa-para-cada-variable" id="toc-agregar-columna-de-posición-adaptativa-para-cada-variable" class="nav-link" data-scroll-target="#agregar-columna-de-posición-adaptativa-para-cada-variable"><span class="header-section-number">5.1.5</span> Agregar columna de posición adaptativa para cada variable</a></li>
-  <li><a href="#crear-gráfico" id="toc-crear-gráfico" class="nav-link" data-scroll-target="#crear-gráfico"><span class="header-section-number">5.1.6</span> Crear gráfico</a></li>
-  </ul></li>
-  </ul></li>
-  </ul>
-</nav>
-</div>
-<main class="content" id="quarto-document-content">
+              <li>
+                <a href="#porcentaje-de-germinación-grp" id="toc-porcentaje-de-germinación-grp" class="nav-link" data-scroll-target="#porcentaje-de-germinación-grp"><span class="header-section-number">4.1</span> Porcentaje de germinación (grp)</a>
+                <ul class="collapse">
+                  <li>
+                    <a href="#anova-de-grp." id="toc-anova-de-grp." class="nav-link" data-scroll-target="#anova-de-grp."><span class="header-section-number">4.1.1</span> ANOVA de grp.</a>
+                  </li>
+                  <li>
+                    <a href="#prueba-de-comparación-de-medias-por-cada-factor" id="toc-prueba-de-comparación-de-medias-por-cada-factor" class="nav-link" data-scroll-target="#prueba-de-comparación-de-medias-por-cada-factor"><span class="header-section-number">4.1.2</span> Prueba de comparación de medias por cada factor</a>
+                  </li>
+                  <li>
+                    <a href="#tabla-de-resultados" id="toc-tabla-de-resultados" class="nav-link" data-scroll-target="#tabla-de-resultados"><span class="header-section-number">4.1.3</span> Tabla de resultados</a>
+                  </li>
+                  <li>
+                    <a href="#gráfico-de-barras-de-porcentage-de-germinación" id="toc-gráfico-de-barras-de-porcentage-de-germinación" class="nav-link" data-scroll-target="#gráfico-de-barras-de-porcentage-de-germinación"><span class="header-section-number">4.1.4</span> Gráfico de barras de porcentage de germinación</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#tiempo-medio-de-germinación-mgt" id="toc-tiempo-medio-de-germinación-mgt" class="nav-link" data-scroll-target="#tiempo-medio-de-germinación-mgt"><span class="header-section-number">4.2</span> Tiempo medio de germinación (mgt)</a>
+                <ul class="collapse">
+                  <li>
+                    <a href="#anova-para-mgt" id="toc-anova-para-mgt" class="nav-link" data-scroll-target="#anova-para-mgt"><span class="header-section-number">4.2.1</span> ANOVA para mgt</a>
+                  </li>
+                  <li>
+                    <a href="#comparación-de-medias" id="toc-comparación-de-medias" class="nav-link" data-scroll-target="#comparación-de-medias"><span class="header-section-number">4.2.2</span> Comparación de medias</a>
+                  </li>
+                  <li>
+                    <a href="#tabla-de-resultados-1" id="toc-tabla-de-resultados-1" class="nav-link" data-scroll-target="#tabla-de-resultados-1"><span class="header-section-number">4.2.3</span> Tabla de resultados</a>
+                  </li>
+                  <li>
+                    <a href="#gráfico-de-barras" id="toc-gráfico-de-barras" class="nav-link" data-scroll-target="#gráfico-de-barras"><span class="header-section-number">4.2.4</span> Gráfico de barras</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#índice-de-sincronización-syn" id="toc-índice-de-sincronización-syn" class="nav-link" data-scroll-target="#índice-de-sincronización-syn"><span class="header-section-number">4.3</span> Índice de sincronización (syn)</a>
+                <ul class="collapse">
+                  <li>
+                    <a href="#anova-para-syn" id="toc-anova-para-syn" class="nav-link" data-scroll-target="#anova-para-syn"><span class="header-section-number">4.3.1</span> ANOVA para syn</a>
+                  </li>
+                  <li>
+                    <a href="#comparación-de-medias-1" id="toc-comparación-de-medias-1" class="nav-link" data-scroll-target="#comparación-de-medias-1"><span class="header-section-number">4.3.2</span> Comparación de medias</a>
+                  </li>
+                  <li>
+                    <a href="#tabla-de-resultados-2" id="toc-tabla-de-resultados-2" class="nav-link" data-scroll-target="#tabla-de-resultados-2"><span class="header-section-number">4.3.3</span> Tabla de resultados</a>
+                  </li>
+                  <li>
+                    <a href="#gráfico-de-barras-1" id="toc-gráfico-de-barras-1" class="nav-link" data-scroll-target="#gráfico-de-barras-1"><span class="header-section-number">4.3.4</span> Gráfico de barras</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#objetivo-específico-2" id="toc-objetivo-específico-2" class="nav-link" data-scroll-target="#objetivo-específico-2"><span class="header-section-number">5</span> Objetivo específico 2</a>
+            <ul class="collapse">
+              <li>
+                <a href="#preparar-tablas-de-medias" id="toc-preparar-tablas-de-medias" class="nav-link" data-scroll-target="#preparar-tablas-de-medias"><span class="header-section-number">5.1</span> Preparar tablas de medias</a>
+                <ul class="collapse">
+                  <li>
+                    <a href="#grp-porcentaje-de-germinación" id="toc-grp-porcentaje-de-germinación" class="nav-link" data-scroll-target="#grp-porcentaje-de-germinación"><span class="header-section-number">5.1.1</span> GRP: porcentaje de germinación</a>
+                  </li>
+                  <li>
+                    <a href="#mgt-tiempo-medio-de-germinación" id="toc-mgt-tiempo-medio-de-germinación" class="nav-link" data-scroll-target="#mgt-tiempo-medio-de-germinación"><span class="header-section-number">5.1.2</span> MGT: tiempo medio de germinación</a>
+                  </li>
+                  <li>
+                    <a href="#syn-índice-de-sincronización" id="toc-syn-índice-de-sincronización" class="nav-link" data-scroll-target="#syn-índice-de-sincronización"><span class="header-section-number">5.1.3</span> SYN: índice de sincronización</a>
+                  </li>
+                  <li>
+                    <a href="#unir-todas-las-tablas" id="toc-unir-todas-las-tablas" class="nav-link" data-scroll-target="#unir-todas-las-tablas"><span class="header-section-number">5.1.4</span> Unir todas las tablas</a>
+                  </li>
+                  <li>
+                    <a href="#agregar-columna-de-posición-adaptativa-para-cada-variable" id="toc-agregar-columna-de-posición-adaptativa-para-cada-variable" class="nav-link" data-scroll-target="#agregar-columna-de-posición-adaptativa-para-cada-variable">
+                    <span class="header-section-number">5.1.5</span> Agregar columna de posición adaptativa para cada variable</a>
+                  </li>
+                  <li>
+                    <a href="#crear-gráfico" id="toc-crear-gráfico" class="nav-link" data-scroll-target="#crear-gráfico"><span class="header-section-number">5.1.6</span> Crear gráfico</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
-
-
-
-<section id="cargar-librerías" class="level1" data-number="1" style="scroll-margin-top: 100px;">
-<h1 data-number="1"><span class="header-section-number">1</span> Cargar librerías</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"https://inkaverse.com/setup.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ℹ Suitable tokens found in the cache, associated with these emails:</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>• '7576425921@untrm.edu.pe'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>• 'yoeld5756@gmail.com'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  Defaulting to the first email.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>! Using an auto-discovered, cached token.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  To suppress this message, modify your code or options to clearly consent to
-  the use of a cached token.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  See gargle's "Non-interactive auth" vignette for more details:</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>  &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ℹ The googlesheets4 package is using a cached token for
-  '7576425921@untrm.edu.pe'.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>ℹ The googledrive package is using a cached token for
-  '7576425921@untrm.edu.pe'.</code></pre>
-</div>
+    <main class="content" id="quarto-document-content">
+      <section id="cargar-librerías" class="level1" data-number="1" style="scroll-margin-top: 100px;">
+        <h1 data-number="1"><span class="header-section-number">1</span> Cargar librerías</h1>
+        <div class="cell">
+          <div class="sourceCode cell-code" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; height: 70px;" >
+            <pre class="sourceCode r code-with-copy" style="text-align: center; border: 0px solid black; height: 60px; padding: 10px; display: flex;" >
+              <code class="sourceCode r" style="text-align: center; border: 0px solid black; height: 20px; display: flex;" >
+                <span id="cb1-1" style="text-align: center; border: 0px solid black; margin: auto; display: flex;">
+                  <a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>
+                  <span class="fu">source</span>(<span class="st">"https://inkaverse.com/setup.r"</span>)
+                </span>
+              </code>
+              <button title="Copy to Clipboard" class="code-copy-button">
+                <i class="bi bi-clipboard"></i>
+              </button>
+            </pre>
+          </div>
+          <div class="cell-output cell-output-stderr">
+            <pre>
+              <code>ℹ Suitable tokens found in the cache, associated with these emails:</code>
+            </pre>
+          </div>
+          <div class="cell-output cell-output-stderr">
+            <pre>
+              <code>• '7576425921@untrm.edu.pe'</code>
+            </pre>
+          </div>
+          <div class="cell-output cell-output-stderr">
+            <pre>
+              <code>• 'yoeld5756@gmail.com'</code>
+            </pre>
+          </div>
+          <div class="cell-output cell-output-stderr">
+            <pre>
+              <code>  Defaulting to the first email.</code>
+            </pre>
+          </div>
+          <div class="cell-output cell-output-stderr">
+            <pre>
+              <code>! Using an auto-discovered, cached token.</code>
+            </pre>
+          </div>
+          <div class="cell-output cell-output-stderr">
+            <pre>
+              <code>To suppress this message, modify your code or options to clearly consent to the use of a cached token.</code>
+            </pre>
+          </div>
+          <div class="cell-output cell-output-stderr">
+            <pre>
+              <code>  See gargle's "Non-interactive auth" vignette for more details:</code>
+            </pre>
+          </div>
+          <div class="cell-output cell-output-stderr">
+            <pre>
+              <code>  &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code>
+            </pre>
+          </div>
+          <div class="cell-output cell-output-stderr">
+            <pre>
+              <code>ℹ The googlesheets4 package is using a cached token for 
+                '7576425921@untrm.edu.pe'.</code>
+            </pre>
+          </div>
+          <div class="cell-output cell-output-stderr">
+            <pre><code>ℹ The googledrive package is using a cached token for
+              '7576425921@untrm.edu.pe'.</code>
+            </pre>
+            </div>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GerminaR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Cargando paquete requerido: agricolae</code></pre>
