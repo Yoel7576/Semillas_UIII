@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+
+
+<title>Analizar datos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="analizar_datos_files/libs/clipboard/clipboard.min.js"></script>
+<script src="analizar_datos_files/libs/quarto-html/quarto.js"></script>
+<script src="analizar_datos_files/libs/quarto-html/popper.min.js"></script>
+<script src="analizar_datos_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="analizar_datos_files/libs/quarto-html/anchor.min.js"></script>
+<link href="analizar_datos_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="analizar_datos_files/libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="analizar_datos_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="analizar_datos_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="analizar_datos_files/libs/bootstrap/bootstrap-1bc8a17f135ab3d594c857e9f48e611b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+<!-- META -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="">
+    <meta name="author" content="GRUPO ">
+    <meta name="robots" content="">    
+    <meta name="description" content="">
+    <meta property="og:description" content="Breve resumen del contenido...">
+    <meta property="og:image" content="URL de una imagen destacada">
+    <meta property="og:url" content="https://tusitio.com/pagina">
+    <meta name="twitter:description" content="Breve resumen para Twitter">
+    <meta name="twitter:image" content="URL de la misma o una imagen optimizada">
+    <meta property="og:title" content="Título del experimento">
+    <meta property="og:site_name" content="">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU3YM5lz5piQaGd1CGOFO1WQxl7XvURnrk1Q&amp;s">
+    <meta name="twitter:creator" content="@Yoel_Diaz">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- FAVICONS ICON en el nabegador (64x64px o 32x32px) -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/Log_icon.png">
+    
+    <!-- Título de la página que aparece en la pestaña del navegador. -->
+    <title>Semillas UIII</title>
+    
+    <!-- Diseño responsivo y adaptabilidad móvil. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--ESTILOS CSS Y JS-->
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/style_general.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link rel="stylesheet" href="search.json">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://kit.fontawesome.com/78ddb093ea.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body class="nav-fixed">
+
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+        <div class="navbar-brand-container mx-auto">
+          <a href="./index.html" class="navbar-brand navbar-brand-logo">
+            <img src="https://www.untrm.edu.pe/assets/images/untrmazul.png" alt="" class="navbar-logo">
+          </a>
+        </div>
+        <div id="quarto-search" class="" title="Search">
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html" aria-current="page"> 
+                <i class="bi bi-house-door-fill" role="img"></i>
+                <span class="menu-text">Inicio </span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="introduccion.html"> 
+                <span class="menu-text">Introducción</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="materiales_metodos.html"> 
+                <span class="menu-text">Materiales y Métodos</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="content.html">
+                <span class="menu-text">Resultados y Discusiones</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="analizar_datos.html"> 
+                <span class="menu-text">Análisis de datos</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="conclusiones.html"> 
+                <span class="menu-text">Conclusiones</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="referencias.html">
+                <span class="menu-text">Referencias</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="navbar-nav navbar-nav-scroll ms-auto">
+            <li class="nav-item compact">
+              <a class="nav-link" href="https://github.com/Yoel7576/Semillas_UIII.git">
+                <i class="bi bi-github" role="img" aria-label="GitHub">
+                  <span class="menu-text"></span>
+                </i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+      <nav id="TOC" role="doc-toc" class="toc-active">
+        <h2 id="toc-title">Table of contents</h2>
+        <ul>
+          <li><a href="#cargar-librerías" id="toc-cargar-librerías" class="nav-link active" data-scroll-target="#cargar-librerías">
+            <span class="header-section-number">1</span> Cargar librerías</a></li>
+          <li>
+          <a href="#cargar-datos" id="toc-cargar-datos" class="nav-link" data-scroll-target="#cargar-datos">
+            <span class="header-section-number">2</span> Cargar datos
+          </a>
+          </li>
+          <li>
+            <a href="#resumen-de-germinación" id="toc-resumen-de-germinación" class="nav-link" data-scroll-target="#resumen-de-germinación">
+              <span class="header-section-number">3</span> Resumen de germinación
+            </a>
+          </li>
+  <li><a href="#objetivo-específico-1" id="toc-objetivo-específico-1" class="nav-link" data-scroll-target="#objetivo-específico-1"><span class="header-section-number">4</span> Objetivo específico 1</a>
+  <ul class="collapse">
+  <li><a href="#porcentaje-de-germinación-grp" id="toc-porcentaje-de-germinación-grp" class="nav-link" data-scroll-target="#porcentaje-de-germinación-grp"><span class="header-section-number">4.1</span> Porcentaje de germinación (grp)</a>
+  <ul class="collapse">
+  <li><a href="#anova-de-grp." id="toc-anova-de-grp." class="nav-link" data-scroll-target="#anova-de-grp."><span class="header-section-number">4.1.1</span> ANOVA de grp.</a></li>
+  <li><a href="#prueba-de-comparación-de-medias-por-cada-factor" id="toc-prueba-de-comparación-de-medias-por-cada-factor" class="nav-link" data-scroll-target="#prueba-de-comparación-de-medias-por-cada-factor"><span class="header-section-number">4.1.2</span> Prueba de comparación de medias por cada factor</a></li>
+  <li><a href="#tabla-de-resultados" id="toc-tabla-de-resultados" class="nav-link" data-scroll-target="#tabla-de-resultados"><span class="header-section-number">4.1.3</span> Tabla de resultados</a></li>
+  <li><a href="#gráfico-de-barras-de-porcentage-de-germinación" id="toc-gráfico-de-barras-de-porcentage-de-germinación" class="nav-link" data-scroll-target="#gráfico-de-barras-de-porcentage-de-germinación"><span class="header-section-number">4.1.4</span> Gráfico de barras de porcentage de germinación</a></li>
+  </ul></li>
+  <li><a href="#tiempo-medio-de-germinación-mgt" id="toc-tiempo-medio-de-germinación-mgt" class="nav-link" data-scroll-target="#tiempo-medio-de-germinación-mgt"><span class="header-section-number">4.2</span> Tiempo medio de germinación (mgt)</a>
+  <ul class="collapse">
+  <li><a href="#anova-para-mgt" id="toc-anova-para-mgt" class="nav-link" data-scroll-target="#anova-para-mgt"><span class="header-section-number">4.2.1</span> ANOVA para mgt</a></li>
+  <li><a href="#comparación-de-medias" id="toc-comparación-de-medias" class="nav-link" data-scroll-target="#comparación-de-medias"><span class="header-section-number">4.2.2</span> Comparación de medias</a></li>
+  <li><a href="#tabla-de-resultados-1" id="toc-tabla-de-resultados-1" class="nav-link" data-scroll-target="#tabla-de-resultados-1"><span class="header-section-number">4.2.3</span> Tabla de resultados</a></li>
+  <li><a href="#gráfico-de-barras" id="toc-gráfico-de-barras" class="nav-link" data-scroll-target="#gráfico-de-barras"><span class="header-section-number">4.2.4</span> Gráfico de barras</a></li>
+  </ul></li>
+  <li><a href="#índice-de-sincronización-syn" id="toc-índice-de-sincronización-syn" class="nav-link" data-scroll-target="#índice-de-sincronización-syn"><span class="header-section-number">4.3</span> Índice de sincronización (syn)</a>
+  <ul class="collapse">
+  <li><a href="#anova-para-syn" id="toc-anova-para-syn" class="nav-link" data-scroll-target="#anova-para-syn"><span class="header-section-number">4.3.1</span> ANOVA para syn</a></li>
+  <li><a href="#comparación-de-medias-1" id="toc-comparación-de-medias-1" class="nav-link" data-scroll-target="#comparación-de-medias-1"><span class="header-section-number">4.3.2</span> Comparación de medias</a></li>
+  <li><a href="#tabla-de-resultados-2" id="toc-tabla-de-resultados-2" class="nav-link" data-scroll-target="#tabla-de-resultados-2"><span class="header-section-number">4.3.3</span> Tabla de resultados</a></li>
+  <li><a href="#gráfico-de-barras-1" id="toc-gráfico-de-barras-1" class="nav-link" data-scroll-target="#gráfico-de-barras-1"><span class="header-section-number">4.3.4</span> Gráfico de barras</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#objetivo-específico-2" id="toc-objetivo-específico-2" class="nav-link" data-scroll-target="#objetivo-específico-2"><span class="header-section-number">5</span> Objetivo específico 2</a>
+  <ul class="collapse">
+  <li><a href="#preparar-tablas-de-medias" id="toc-preparar-tablas-de-medias" class="nav-link" data-scroll-target="#preparar-tablas-de-medias"><span class="header-section-number">5.1</span> Preparar tablas de medias</a>
+  <ul class="collapse">
+  <li><a href="#grp-porcentaje-de-germinación" id="toc-grp-porcentaje-de-germinación" class="nav-link" data-scroll-target="#grp-porcentaje-de-germinación"><span class="header-section-number">5.1.1</span> GRP: porcentaje de germinación</a></li>
+  <li><a href="#mgt-tiempo-medio-de-germinación" id="toc-mgt-tiempo-medio-de-germinación" class="nav-link" data-scroll-target="#mgt-tiempo-medio-de-germinación"><span class="header-section-number">5.1.2</span> MGT: tiempo medio de germinación</a></li>
+  <li><a href="#syn-índice-de-sincronización" id="toc-syn-índice-de-sincronización" class="nav-link" data-scroll-target="#syn-índice-de-sincronización"><span class="header-section-number">5.1.3</span> SYN: índice de sincronización</a></li>
+  <li><a href="#unir-todas-las-tablas" id="toc-unir-todas-las-tablas" class="nav-link" data-scroll-target="#unir-todas-las-tablas"><span class="header-section-number">5.1.4</span> Unir todas las tablas</a></li>
+  <li><a href="#agregar-columna-de-posición-adaptativa-para-cada-variable" id="toc-agregar-columna-de-posición-adaptativa-para-cada-variable" class="nav-link" data-scroll-target="#agregar-columna-de-posición-adaptativa-para-cada-variable"><span class="header-section-number">5.1.5</span> Agregar columna de posición adaptativa para cada variable</a></li>
+  <li><a href="#crear-gráfico" id="toc-crear-gráfico" class="nav-link" data-scroll-target="#crear-gráfico"><span class="header-section-number">5.1.6</span> Crear gráfico</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="cargar-librerías" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Cargar librerías</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"https://inkaverse.com/setup.r"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ Suitable tokens found in the cache, associated with these emails:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• '7576425921@untrm.edu.pe'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• 'yoeld5756@gmail.com'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  Defaulting to the first email.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>! Using an auto-discovered, cached token.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  To suppress this message, modify your code or options to clearly consent to
+  the use of a cached token.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  See gargle's "Non-interactive auth" vignette for more details:</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  &lt;https://gargle.r-lib.org/articles/non-interactive-auth.html&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ The googlesheets4 package is using a cached token for
+  '7576425921@untrm.edu.pe'.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ The googledrive package is using a cached token for
+  '7576425921@untrm.edu.pe'.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GerminaR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Cargando paquete requerido: agricolae</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GerminaR)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cargar-datos" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Cargar datos</h1>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>gs <span class="ot">&lt;-</span> (<span class="st">"https://docs.google.com/spreadsheets/d/1APoUsK8k7n8oSHP9dZXcmpYpJ4a6eJs3QikAp_eOvLQ/edit?gid=537863656#gid=537863656"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_sheets_id</span>(url)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>fb <span class="ot">&lt;-</span> gs <span class="sc">%&gt;%</span> </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">range_read</span>(<span class="st">"fb"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(<span class="dv">1</span><span class="sc">:</span>cols, <span class="sc">~</span><span class="fu">as.factor</span>(.)),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">qrcode =</span> <span class="fu">as.character</span>(qrcode),</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">plots =</span> <span class="fu">as.integer</span>(plots),</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Seed =</span> <span class="fu">as.integer</span>(Seed),</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">hora_evaluc =</span> <span class="fu">as.character</span>(hora_evaluc)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(fb)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 'data.frame':    24 obs. of  19 variables:</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ qrcode     : chr  "CHACHAPOYAS_2025-06-30_3_C3_Criolla" "CHACHAPOYAS_2025-06-30_4_C2_Morada" "CHACHAPOYAS_2025-06-30_5_C3_Morada" "CHACHAPOYAS_2025-06-30_5_C2_Criolla" ...</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ plots      : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ ntreat     : Factor w/ 8 levels "1","2","3","4",..: 4 7 8 3 6 3 4 2 2 2 ...</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ dosis      : Factor w/ 4 levels "C0_Control","C1_(05g/100 ml)",..: 4 3 4 3 2 3 4 2 2 2 ...</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ variedad   : Factor w/ 2 levels "Criolla","Morada": 1 2 2 1 2 1 1 1 1 1 ...</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ sort       : Factor w/ 8 levels "1","2","3","4",..: 1 2 3 1 2 4 3 1 5 4 ...</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ block      : Factor w/ 3 levels "1","2","3": 1 1 1 2 2 1 2 3 1 2 ...</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ rows       : Factor w/ 3 levels "1","2","3": 1 1 1 2 2 1 2 3 1 2 ...</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ cols       : Factor w/ 8 levels "1","2","3","4",..: 1 2 3 1 2 4 3 1 5 4 ...</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Seed       : int  25 25 25 25 25 25 25 25 25 25 ...</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ hora_evaluc: chr  "1899-12-30 19:00:00" "1899-12-30 19:00:00" "1899-12-30 19:00:00" "1899-12-30 19:00:00" ...</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Ger_0      : num  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Ger_1      : num  0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Ger_2      : num  1 25 21 5 22 4 3 9 0 0 ...</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Ger_3      : num  2 0 3 7 3 10 1 9 6 0 ...</span></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Ger_4      : num  6 0 1 3 0 2 5 5 1 1 ...</span></span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Ger_5      : num  5 0 0 5 0 2 5 1 2 7 ...</span></span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Ger_6      : num  2 0 0 1 0 6 3 0 5 6 ...</span></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ Ger_7      : num  0 0 0 0 0 0 0 0 0 0 ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="resumen-de-germinación" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Resumen de germinación</h1>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>gsm <span class="ot">&lt;-</span> <span class="fu">ger_summary</span>(<span class="at">SeedN =</span> <span class="st">"Seed"</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">evalName =</span> <span class="st">"Ger_"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">data =</span> fb)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>gsm <span class="sc">%&gt;%</span> <span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 9%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">qrcode</th>
+<th style="text-align: right;">plots</th>
+<th style="text-align: left;">ntreat</th>
+<th style="text-align: left;">dosis</th>
+<th style="text-align: left;">variedad</th>
+<th style="text-align: left;">sort</th>
+<th style="text-align: left;">block</th>
+<th style="text-align: left;">rows</th>
+<th style="text-align: left;">cols</th>
+<th style="text-align: right;">Seed</th>
+<th style="text-align: left;">hora_evaluc</th>
+<th style="text-align: right;">grs</th>
+<th style="text-align: right;">grp</th>
+<th style="text-align: right;">mgt</th>
+<th style="text-align: right;">mgr</th>
+<th style="text-align: right;">gsp</th>
+<th style="text-align: right;">unc</th>
+<th style="text-align: right;">syn</th>
+<th style="text-align: right;">vgt</th>
+<th style="text-align: right;">sdg</th>
+<th style="text-align: right;">cvg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_3_C3_Criolla</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">C3_(15g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">4.312500</td>
+<td style="text-align: right;">0.2318841</td>
+<td style="text-align: right;">23.18841</td>
+<td style="text-align: right;">2.0550365</td>
+<td style="text-align: right;">0.2250000</td>
+<td style="text-align: right;">1.1625000</td>
+<td style="text-align: right;">1.0781929</td>
+<td style="text-align: right;">25.001575</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_4_C2_Morada</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">C2_(10g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">0.5000000</td>
+<td style="text-align: right;">50.00000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_5_C3_Morada</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">C3_(15g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2.200000</td>
+<td style="text-align: right;">0.4545455</td>
+<td style="text-align: right;">45.45455</td>
+<td style="text-align: right;">0.7641141</td>
+<td style="text-align: right;">0.7100000</td>
+<td style="text-align: right;">0.2500000</td>
+<td style="text-align: right;">0.5000000</td>
+<td style="text-align: right;">22.727273</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_5_C2_Criolla</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">C2_(10g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">3.523810</td>
+<td style="text-align: right;">0.2837838</td>
+<td style="text-align: right;">28.37838</td>
+<td style="text-align: right;">2.1244292</td>
+<td style="text-align: right;">0.2095238</td>
+<td style="text-align: right;">1.5619048</td>
+<td style="text-align: right;">1.2497619</td>
+<td style="text-align: right;">35.466216</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_6_C1_Morada</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">C1_(05g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2.120000</td>
+<td style="text-align: right;">0.4716981</td>
+<td style="text-align: right;">47.16981</td>
+<td style="text-align: right;">0.5293609</td>
+<td style="text-align: right;">0.7800000</td>
+<td style="text-align: right;">0.1100000</td>
+<td style="text-align: right;">0.3316625</td>
+<td style="text-align: right;">15.644457</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_6_C2_Criolla</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">C2_(10g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">3.833333</td>
+<td style="text-align: right;">0.2608696</td>
+<td style="text-align: right;">26.08696</td>
+<td style="text-align: right;">2.0545852</td>
+<td style="text-align: right;">0.2463768</td>
+<td style="text-align: right;">2.2318841</td>
+<td style="text-align: right;">1.4939491</td>
+<td style="text-align: right;">38.972586</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_7_C3_Criolla</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">C3_(15g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">4.235294</td>
+<td style="text-align: right;">0.2361111</td>
+<td style="text-align: right;">23.61111</td>
+<td style="text-align: right;">2.1622243</td>
+<td style="text-align: right;">0.1911765</td>
+<td style="text-align: right;">1.8161765</td>
+<td style="text-align: right;">1.3476559</td>
+<td style="text-align: right;">31.819654</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_7_C1_Criolla</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">C1_(05g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">2.916667</td>
+<td style="text-align: right;">0.3428571</td>
+<td style="text-align: right;">34.28571</td>
+<td style="text-align: right;">1.7237837</td>
+<td style="text-align: right;">0.2971014</td>
+<td style="text-align: right;">0.7753623</td>
+<td style="text-align: right;">0.8805466</td>
+<td style="text-align: right;">30.190169</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_7_C1_Criolla</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">C1_(05g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">4.428571</td>
+<td style="text-align: right;">0.2258065</td>
+<td style="text-align: right;">22.58065</td>
+<td style="text-align: right;">1.7273967</td>
+<td style="text-align: right;">0.2857143</td>
+<td style="text-align: right;">1.9560440</td>
+<td style="text-align: right;">1.3985864</td>
+<td style="text-align: right;">31.580983</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_8_C1_Criolla</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">C1_(05g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">5.357143</td>
+<td style="text-align: right;">0.1866667</td>
+<td style="text-align: right;">18.66667</td>
+<td style="text-align: right;">1.2958364</td>
+<td style="text-align: right;">0.3956044</td>
+<td style="text-align: right;">0.4010989</td>
+<td style="text-align: right;">0.6333237</td>
+<td style="text-align: right;">11.822042</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_8_C2_Criolla</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">C2_(10g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: right;">3.166667</td>
+<td style="text-align: right;">0.3157895</td>
+<td style="text-align: right;">31.57895</td>
+<td style="text-align: right;">1.8955734</td>
+<td style="text-align: right;">0.2536232</td>
+<td style="text-align: right;">1.0144928</td>
+<td style="text-align: right;">1.0072203</td>
+<td style="text-align: right;">31.806957</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_8_C1_Morada</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">C1_(05g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2.040000</td>
+<td style="text-align: right;">0.4901961</td>
+<td style="text-align: right;">49.01961</td>
+<td style="text-align: right;">0.2422922</td>
+<td style="text-align: right;">0.9200000</td>
+<td style="text-align: right;">0.0400000</td>
+<td style="text-align: right;">0.2000000</td>
+<td style="text-align: right;">9.803922</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_9_C3_Morada</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">C3_(15g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">0.5000000</td>
+<td style="text-align: right;">50.00000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_9_C0_Control_Morada</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">C0_Control</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">0.5000000</td>
+<td style="text-align: right;">50.00000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_9_C0_Control_Criolla</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">C0_Control</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">1.440000</td>
+<td style="text-align: right;">0.6944444</td>
+<td style="text-align: right;">69.44444</td>
+<td style="text-align: right;">1.2177968</td>
+<td style="text-align: right;">0.4733333</td>
+<td style="text-align: right;">0.4233333</td>
+<td style="text-align: right;">0.6506407</td>
+<td style="text-align: right;">45.183383</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_10_C0_Control_Criolla</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">C0_Control</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">1.320000</td>
+<td style="text-align: right;">0.7575758</td>
+<td style="text-align: right;">75.75758</td>
+<td style="text-align: right;">0.9043815</td>
+<td style="text-align: right;">0.5466667</td>
+<td style="text-align: right;">0.2266667</td>
+<td style="text-align: right;">0.4760952</td>
+<td style="text-align: right;">36.067820</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_10_C2_Morada</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">C2_(10g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">0.5000000</td>
+<td style="text-align: right;">50.00000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_10_C0_Control_Morada</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">C0_Control</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2.080000</td>
+<td style="text-align: right;">0.4807692</td>
+<td style="text-align: right;">48.07692</td>
+<td style="text-align: right;">0.4021792</td>
+<td style="text-align: right;">0.8466667</td>
+<td style="text-align: right;">0.0766667</td>
+<td style="text-align: right;">0.2768875</td>
+<td style="text-align: right;">13.311897</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_11_C2_Morada</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">C2_(10g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">0.5000000</td>
+<td style="text-align: right;">50.00000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_11_C0_Control_Criolla</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">C0_Control</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">1.560000</td>
+<td style="text-align: right;">0.6410256</td>
+<td style="text-align: right;">64.10256</td>
+<td style="text-align: right;">1.3593308</td>
+<td style="text-align: right;">0.4200000</td>
+<td style="text-align: right;">0.5900000</td>
+<td style="text-align: right;">0.7681146</td>
+<td style="text-align: right;">49.238114</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_12_C0_Control_Morada</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">C0_Control</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">0.5000000</td>
+<td style="text-align: right;">50.00000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.000000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_12_C3_Morada</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">C3_(15g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2.040000</td>
+<td style="text-align: right;">0.4901961</td>
+<td style="text-align: right;">49.01961</td>
+<td style="text-align: right;">0.2422922</td>
+<td style="text-align: right;">0.9200000</td>
+<td style="text-align: right;">0.0400000</td>
+<td style="text-align: right;">0.2000000</td>
+<td style="text-align: right;">9.803922</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_13_C3_Criolla</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">C3_(15g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: right;">3.764706</td>
+<td style="text-align: right;">0.2656250</td>
+<td style="text-align: right;">26.56250</td>
+<td style="text-align: right;">2.1895415</td>
+<td style="text-align: right;">0.1911765</td>
+<td style="text-align: right;">1.8161765</td>
+<td style="text-align: right;">1.3476559</td>
+<td style="text-align: right;">35.797110</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHACHAPOYAS_2025-06-30_14_C1_Morada</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">C1_(05g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">1899-12-30 19:00:00</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">2.200000</td>
+<td style="text-align: right;">0.4545455</td>
+<td style="text-align: right;">45.45455</td>
+<td style="text-align: right;">0.4821792</td>
+<td style="text-align: right;">0.8433333</td>
+<td style="text-align: right;">0.5000000</td>
+<td style="text-align: right;">0.7071068</td>
+<td style="text-align: right;">32.141217</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="objetivo-específico-1" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Objetivo específico 1</h1>
+<section id="porcentaje-de-germinación-grp" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="porcentaje-de-germinación-grp"><span class="header-section-number">4.1</span> Porcentaje de germinación (grp)</h2>
+<section id="anova-de-grp." class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="anova-de-grp."><span class="header-section-number">4.1.1</span> ANOVA de grp.</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>av <span class="ot">&lt;-</span> <span class="fu">aov</span>(grp <span class="sc">~</span> dosis <span class="sc">*</span> variedad <span class="sc">+</span> block, <span class="at">data =</span> gsm)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(av)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Analysis of Variance Table</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Response: grp</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="do">##                Df  Sum Sq Mean Sq F value    Pr(&gt;F)    </span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="do">## dosis           3 1229.33  409.78  5.8699 0.0082143 ** </span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="do">## variedad        1 1944.00 1944.00 27.8472 0.0001169 ***</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="do">## block           2  196.00   98.00  1.4038 0.2781949    </span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="do">## dosis:variedad  3 1229.33  409.78  5.8699 0.0082143 ** </span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Residuals      14  977.33   69.81                      </span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="prueba-de-comparación-de-medias-por-cada-factor" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="prueba-de-comparación-de-medias-por-cada-factor"><span class="header-section-number">4.1.2</span> Prueba de comparación de medias por cada factor</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>mc_grp <span class="ot">&lt;-</span> <span class="fu">ger_testcomp</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">aov =</span> av,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">comp =</span> <span class="fu">c</span>(<span class="st">"dosis"</span>, <span class="st">"variedad"</span>),</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"snk"</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tabla-de-resultados" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="tabla-de-resultados"><span class="header-section-number">4.1.3</span> Tabla de resultados</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>mc_grp<span class="sc">$</span>table <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Comparación de medias del porcentaje de germinación (GRP)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Comparación de medias del porcentaje de germinación (GRP)</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 11%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 3%">
+<col style="width: 12%">
+<col style="width: 11%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">dosis</th>
+<th style="text-align: left;">variedad</th>
+<th style="text-align: right;">grp</th>
+<th style="text-align: right;">std</th>
+<th style="text-align: right;">r</th>
+<th style="text-align: right;">ste</th>
+<th style="text-align: right;">se</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: left;">sig</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">C0_Control</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: right;">100.00000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">4.823882</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C0_Control</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: right;">100.00000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">4.823882</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C1_(05g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: right;">69.33333</td>
+<td style="text-align: right;">23.094011</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">13.333333</td>
+<td style="text-align: right;">4.823882</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: left;">b</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C1_(05g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: right;">100.00000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">4.823882</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C2_(10g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: right;">92.00000</td>
+<td style="text-align: right;">6.928203</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4.000000</td>
+<td style="text-align: right;">4.823882</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">96</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C2_(10g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: right;">100.00000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">4.823882</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C3_(15g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: right;">66.66667</td>
+<td style="text-align: right;">2.309401</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1.333333</td>
+<td style="text-align: right;">4.823882</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">68</td>
+<td style="text-align: left;">b</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C3_(15g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: right;">100.00000</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.000000</td>
+<td style="text-align: right;">4.823882</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">a</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="gráfico-de-barras-de-porcentage-de-germinación" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="gráfico-de-barras-de-porcentage-de-germinación"><span class="header-section-number">4.1.4</span> Gráfico de barras de porcentage de germinación</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>grp <span class="ot">&lt;-</span> mc_grp<span class="sc">$</span>table <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fplot</span>(<span class="at">data =</span> .,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"bar"</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"variedad"</span>,         <span class="co"># eje X: variedad</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"grp"</span>,              <span class="co"># variable a graficar</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">group =</span> <span class="st">"dosis"</span>,        <span class="co"># agrupamiento por color</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylimits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">120</span>, <span class="dv">20</span>),</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Germinación ('%')"</span>,   <span class="co"># &lt;- evitar % y tildes</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Variedad"</span>,</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">glab =</span> <span class="st">"Dosis"</span>,</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">error =</span> <span class="st">"ste"</span>,</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">sig =</span> <span class="st">"sig"</span>,</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="cn">TRUE</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>grp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="analizar_datos_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:98.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="tiempo-medio-de-germinación-mgt" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="tiempo-medio-de-germinación-mgt"><span class="header-section-number">4.2</span> Tiempo medio de germinación (mgt)</h2>
+<section id="anova-para-mgt" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="anova-para-mgt"><span class="header-section-number">4.2.1</span> ANOVA para mgt</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>av_mgt <span class="ot">&lt;-</span> <span class="fu">aov</span>(mgt <span class="sc">~</span> dosis <span class="sc">*</span> variedad <span class="sc">+</span> block, <span class="at">data =</span> gsm)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(av_mgt)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Analysis of Variance Table</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Response: mgt</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="do">##                Df Sum Sq Mean Sq F value      Pr(&gt;F)    </span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="do">## dosis           3 7.9092  2.6364 12.9679   0.0002503 ***</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="do">## variedad        1 9.5997  9.5997 47.2189 0.000007664 ***</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="do">## block           2 0.6551  0.3276  1.6113   0.2345421    </span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="do">## dosis:variedad  3 7.1776  2.3925 11.7683   0.0004053 ***</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Residuals      14 2.8462  0.2033                        </span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="comparación-de-medias" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="comparación-de-medias"><span class="header-section-number">4.2.2</span> Comparación de medias</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>mc_mgt <span class="ot">&lt;-</span> <span class="fu">ger_testcomp</span>(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">aov =</span> av_mgt,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">comp =</span> <span class="fu">c</span>(<span class="st">"dosis"</span>, <span class="st">"variedad"</span>),</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"snk"</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tabla-de-resultados-1" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="tabla-de-resultados-1"><span class="header-section-number">4.2.3</span> Tabla de resultados</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>mc_mgt<span class="sc">$</span>table <span class="sc">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Comparación de medias del tiempo medio de germinación (MGT)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Comparación de medias del tiempo medio de germinación (MGT)</caption>
+<colgroup>
+<col style="width: 17%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 3%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">dosis</th>
+<th style="text-align: left;">variedad</th>
+<th style="text-align: right;">mgt</th>
+<th style="text-align: right;">std</th>
+<th style="text-align: right;">r</th>
+<th style="text-align: right;">ste</th>
+<th style="text-align: right;">se</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: left;">sig</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">C0_Control</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: right;">1.440000</td>
+<td style="text-align: right;">0.1200000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0692820</td>
+<td style="text-align: right;">0.2603216</td>
+<td style="text-align: right;">1.320000</td>
+<td style="text-align: right;">1.560000</td>
+<td style="text-align: left;">b</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C0_Control</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: right;">2.026667</td>
+<td style="text-align: right;">0.0461880</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0266667</td>
+<td style="text-align: right;">0.2603216</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.080000</td>
+<td style="text-align: left;">b</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C1_(05g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: right;">4.234127</td>
+<td style="text-align: right;">1.2318025</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.7111815</td>
+<td style="text-align: right;">0.2603216</td>
+<td style="text-align: right;">2.916667</td>
+<td style="text-align: right;">5.357143</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C1_(05g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: right;">2.120000</td>
+<td style="text-align: right;">0.0800000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0461880</td>
+<td style="text-align: right;">0.2603216</td>
+<td style="text-align: right;">2.040000</td>
+<td style="text-align: right;">2.200000</td>
+<td style="text-align: left;">b</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C2_(10g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: right;">3.507937</td>
+<td style="text-align: right;">0.3336167</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.1926137</td>
+<td style="text-align: right;">0.2603216</td>
+<td style="text-align: right;">3.166667</td>
+<td style="text-align: right;">3.833333</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C2_(10g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.2603216</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: left;">b</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C3_(15g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: right;">4.104167</td>
+<td style="text-align: right;">0.2965053</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.1711874</td>
+<td style="text-align: right;">0.2603216</td>
+<td style="text-align: right;">3.764706</td>
+<td style="text-align: right;">4.312500</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C3_(15g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: right;">2.080000</td>
+<td style="text-align: right;">0.1058301</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0611010</td>
+<td style="text-align: right;">0.2603216</td>
+<td style="text-align: right;">2.000000</td>
+<td style="text-align: right;">2.200000</td>
+<td style="text-align: left;">b</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="gráfico-de-barras" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="gráfico-de-barras"><span class="header-section-number">4.2.4</span> Gráfico de barras</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>mgt_plot <span class="ot">&lt;-</span> mc_mgt<span class="sc">$</span>table <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fplot</span>(<span class="at">data =</span> .,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"bar"</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"variedad"</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"mgt"</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">group =</span> <span class="st">"dosis"</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylimits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(.<span class="sc">$</span>mgt <span class="sc">+</span> .<span class="sc">$</span>ste, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="fl">1.2</span>, <span class="dv">1</span>),</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Tiempo medio de germinación (días)"</span>,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Variedad"</span>,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">glab =</span> <span class="st">"Dosis"</span>,</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">error =</span> <span class="st">"ste"</span>,</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">sig =</span> <span class="st">"sig"</span>,</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>mgt_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="analizar_datos_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:98.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="índice-de-sincronización-syn" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="índice-de-sincronización-syn"><span class="header-section-number">4.3</span> Índice de sincronización (syn)</h2>
+<section id="anova-para-syn" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="anova-para-syn"><span class="header-section-number">4.3.1</span> ANOVA para syn</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>av_syn <span class="ot">&lt;-</span> <span class="fu">aov</span>(syn <span class="sc">~</span> dosis <span class="sc">*</span> variedad <span class="sc">+</span> block, <span class="at">data =</span> gsm)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(av_syn)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Analysis of Variance Table</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Response: syn</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="do">##                Df  Sum Sq Mean Sq  F value           Pr(&gt;F)    </span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="do">## dosis           3 0.09826 0.03275   5.9690         0.007716 ** </span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="do">## variedad        1 2.21112 2.21112 402.9391 0.00000000001023 ***</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="do">## block           2 0.01082 0.00541   0.9857         0.397631    </span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="do">## dosis:variedad  3 0.08305 0.02768   5.0450         0.014136 *  </span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Residuals      14 0.07682 0.00549                              </span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="comparación-de-medias-1" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="comparación-de-medias-1"><span class="header-section-number">4.3.2</span> Comparación de medias</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>mc_syn <span class="ot">&lt;-</span> <span class="fu">ger_testcomp</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">aov =</span> av_syn,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">comp =</span> <span class="fu">c</span>(<span class="st">"dosis"</span>, <span class="st">"variedad"</span>),</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"snk"</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tabla-de-resultados-2" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="tabla-de-resultados-2"><span class="header-section-number">4.3.3</span> Tabla de resultados</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mc_syn<span class="sc">$</span>table <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Comparación de medias del índice de sincronización (SYN)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Comparación de medias del índice de sincronización (SYN)</caption>
+<colgroup>
+<col style="width: 17%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 3%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">dosis</th>
+<th style="text-align: left;">variedad</th>
+<th style="text-align: right;">syn</th>
+<th style="text-align: right;">std</th>
+<th style="text-align: right;">r</th>
+<th style="text-align: right;">ste</th>
+<th style="text-align: right;">se</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: left;">sig</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">C0_Control</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: right;">0.4800000</td>
+<td style="text-align: right;">0.0635959</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0367171</td>
+<td style="text-align: right;">0.0427687</td>
+<td style="text-align: right;">0.4200000</td>
+<td style="text-align: right;">0.5466667</td>
+<td style="text-align: left;">b</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C0_Control</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: right;">0.9488889</td>
+<td style="text-align: right;">0.0885270</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0511111</td>
+<td style="text-align: right;">0.0427687</td>
+<td style="text-align: right;">0.8466667</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C1_(05g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: right;">0.3261400</td>
+<td style="text-align: right;">0.0604267</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0348874</td>
+<td style="text-align: right;">0.0427687</td>
+<td style="text-align: right;">0.2857143</td>
+<td style="text-align: right;">0.3956044</td>
+<td style="text-align: left;">c</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C1_(05g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: right;">0.8477778</td>
+<td style="text-align: right;">0.0701057</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0404756</td>
+<td style="text-align: right;">0.0427687</td>
+<td style="text-align: right;">0.7800000</td>
+<td style="text-align: right;">0.9200000</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C2_(10g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: right;">0.2365079</td>
+<td style="text-align: right;">0.0236481</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0136533</td>
+<td style="text-align: right;">0.0427687</td>
+<td style="text-align: right;">0.2095238</td>
+<td style="text-align: right;">0.2536232</td>
+<td style="text-align: left;">c</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C2_(10g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0000000</td>
+<td style="text-align: right;">0.0427687</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: left;">a</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C3_(15g/100 ml)</td>
+<td style="text-align: left;">Criolla</td>
+<td style="text-align: right;">0.2024510</td>
+<td style="text-align: right;">0.0195280</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0112745</td>
+<td style="text-align: right;">0.0427687</td>
+<td style="text-align: right;">0.1911765</td>
+<td style="text-align: right;">0.2250000</td>
+<td style="text-align: left;">c</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C3_(15g/100 ml)</td>
+<td style="text-align: left;">Morada</td>
+<td style="text-align: right;">0.8766667</td>
+<td style="text-align: right;">0.1497776</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0.0864741</td>
+<td style="text-align: right;">0.0427687</td>
+<td style="text-align: right;">0.7100000</td>
+<td style="text-align: right;">1.0000000</td>
+<td style="text-align: left;">a</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="gráfico-de-barras-1" class="level3" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="gráfico-de-barras-1"><span class="header-section-number">4.3.4</span> Gráfico de barras</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>syn_plot <span class="ot">&lt;-</span> mc_syn<span class="sc">$</span>table <span class="sc">%&gt;%</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fplot</span>(<span class="at">data =</span> .,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"bar"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">x =</span> <span class="st">"variedad"</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">y =</span> <span class="st">"syn"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">group =</span> <span class="st">"dosis"</span>,</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylimits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(.<span class="sc">$</span>syn <span class="sc">+</span> .<span class="sc">$</span>ste, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="fl">1.2</span>, <span class="fl">0.1</span>),</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Índice de sincronización"</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Variedad"</span>,</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">glab =</span> <span class="st">"Dosis"</span>,</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">error =</span> <span class="st">"ste"</span>,</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">sig =</span> <span class="st">"sig"</span>,</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">color =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>syn_plot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="analizar_datos_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:98.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="objetivo-específico-2" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Objetivo específico 2</h1>
+<section id="preparar-tablas-de-medias" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="preparar-tablas-de-medias"><span class="header-section-number">5.1</span> Preparar tablas de medias</h2>
+<section id="grp-porcentaje-de-germinación" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="grp-porcentaje-de-germinación"><span class="header-section-number">5.1.1</span> GRP: porcentaje de germinación</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>grp_df <span class="ot">&lt;-</span> mc_grp<span class="sc">$</span>table <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(variedad, dosis, <span class="at">valor =</span> grp, ste, sig) <span class="sc">%&gt;%</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="st">"GRP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="mgt-tiempo-medio-de-germinación" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="mgt-tiempo-medio-de-germinación"><span class="header-section-number">5.1.2</span> MGT: tiempo medio de germinación</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>mgt_df <span class="ot">&lt;-</span> mc_mgt<span class="sc">$</span>table <span class="sc">%&gt;%</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(variedad, dosis, <span class="at">valor =</span> mgt, ste, sig) <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="st">"MGT"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="syn-índice-de-sincronización" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="syn-índice-de-sincronización"><span class="header-section-number">5.1.3</span> SYN: índice de sincronización</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>syn_df <span class="ot">&lt;-</span> mc_syn<span class="sc">$</span>table <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(variedad, dosis, <span class="at">valor =</span> syn, ste, sig) <span class="sc">%&gt;%</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">variable =</span> <span class="st">"SYN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="unir-todas-las-tablas" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="unir-todas-las-tablas"><span class="header-section-number">5.1.4</span> Unir todas las tablas</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>todo_df <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(grp_df, mgt_df, syn_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="agregar-columna-de-posición-adaptativa-para-cada-variable" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="agregar-columna-de-posición-adaptativa-para-cada-variable"><span class="header-section-number">5.1.5</span> Agregar columna de posición adaptativa para cada variable</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>todo_df <span class="ot">&lt;-</span> todo_df <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(variable) <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">ajuste =</span> <span class="fu">case_when</span>(</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>      variable <span class="sc">==</span> <span class="st">"GRP"</span> <span class="sc">~</span> <span class="dv">5</span>,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>      variable <span class="sc">==</span> <span class="st">"MGT"</span> <span class="sc">~</span> <span class="fl">0.5</span>,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>      variable <span class="sc">==</span> <span class="st">"SYN"</span> <span class="sc">~</span> <span class="fl">0.05</span>,</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="fl">0.1</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">pos_letra =</span> valor <span class="sc">+</span> ste <span class="sc">+</span> ajuste</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="crear-gráfico" class="level3" data-number="5.1.6">
+<h3 data-number="5.1.6" class="anchored" data-anchor-id="crear-gráfico"><span class="header-section-number">5.1.6</span> Crear gráfico</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>grafico_objetivo2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(todo_df, <span class="fu">aes</span>(<span class="at">x =</span> variedad, <span class="at">y =</span> valor, <span class="at">fill =</span> dosis)) <span class="sc">+</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>), </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> valor <span class="sc">-</span> ste, <span class="at">ymax =</span> valor <span class="sc">+</span> ste),</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>), </span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> pos_letra, <span class="at">label =</span> sig),</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>),</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>variable, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Respuesta germinativa de dos variedades de lechuga frente a diferentes dosis de canela"</span>,</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Variedad"</span>,</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Valor del índice germinativo"</span>,</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Dosis"</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"bottom"</span></span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar gráfico</span></span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>grafico_objetivo2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="analizar_datos_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:98.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+    <footer class="footer">
+      <div class="nav-footer">
+        <div class="nav-footer-left">
+          <p>Esta página fue creada con ❤️ y 
+            <a href="https://lenguajehtml.com/html/">html</a>.
+          </p>
+        </div>
+        <div class="nav-footer-center">
+          <div class="toc-actions">
+            <ul>
+              <li>
+                <a href="https://github.com/Yoel7576/Semillas_UIII/pulls" class="toc-action">
+                  <i class="bi bi-github"></i>Edit this page
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/Yoel7576/Semillas_UIII/issues/new" class="toc-action">
+                  <i class="bi empty"></i>Report an issue
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+</body></html>

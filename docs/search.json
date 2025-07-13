@@ -4,7 +4,7 @@
     "href": "conclusiones.html",
     "title": "Conclusiones",
     "section": "",
-    "text": "El tratamiento con lija presentó un mayor tiempo medio de germinación, lo que sugiere que, aunque promovió una mayor germinación, las semillas tardaron más en germinar debido a una mayor heterogeneidad en la germinación.\nEl tratamiento con agua hervida tuvo el porcentaje de germinación más bajo, lo que indica que el calor excesivo fue perjudicial. En cambio, los tratamientos con lija y bisturí fueron más efectivos que el control, promoviendo una germinación superior.\nLa escarificación con lija mostró el mayor índice de sincronización, lo que significa que la germinación fue más uniforme, lo cual es ventajoso agronómicamente para obtener un cultivo más homogéneo."
+    "text": "tex"
   },
   {
     "objectID": "materiales_metodos.html",
@@ -138,5 +138,12 @@
     "title": "Introducción",
     "section": "Objetivos Específicos",
     "text": "Objetivos Específicos\n\n1. Determinar el tiempo medio de germinación de las semillas de garbanzo bajo los diferentes tratamientos de escarificación.\n\n\n2. Evaluar el porcentaje de germinación de las semillas de garbanzo sometidas a diferentes tratamientos de escarificación en comparación con el tratamiento control.\n\n\n3. Calcular el índice de sincronización de germinación de las semillas de garbanzo tratadas con escarificación, comparándolo con el tratamiento control."
+  },
+  {
+    "objectID": "analizar_datos.html",
+    "href": "analizar_datos.html",
+    "title": "Analizar datos",
+    "section": "",
+    "text": "El tratamiento con lija presentó un mayor tiempo medio de germinación, lo que sugiere que, aunque promovió una mayor germinación, las semillas tardaron más en germinar debido a una mayor heterogeneidad en la germinación.\nEl tratamiento con agua hervida tuvo el porcentaje de germinación más bajo, lo que indica que el calor excesivo fue perjudicial. En cambio, los tratamientos con lija y bisturí fueron más efectivos que el control, promoviendo una germinación superior.\nLa escarificación con lija mostró el mayor índice de sincronización, lo que significa que la germinación fue más uniforme, lo cual es ventajoso agronómicamente para obtener un cultivo más homogéneo."
   }
 ]
