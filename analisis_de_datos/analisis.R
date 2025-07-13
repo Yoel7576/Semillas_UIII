@@ -228,3 +228,12 @@ grafico_objetivo2 <- ggplot(todo_df, aes(x = variedad, y = valor, fill = dosis))
 grafico_objetivo2
 
 
+# Exportar gráficos con fondo blanco
+ggsave("grafico_objetivo2.png", plot = grafico_objetivo2, width = 10, height = 6, dpi = 300, bg = "white")
+ggsave("mgt_plot.png", plot = mgt_plot, width = 8, height = 5, dpi = 300, bg = "white")
+ggsave("syn_plot.png", plot = syn_plot, width = 8, height = 5, dpi = 300, bg = "white")
+ggsave("grp.png", plot = grp, width = 8, height = 5, dpi = 300, bg = "white")
+
+
+
+
