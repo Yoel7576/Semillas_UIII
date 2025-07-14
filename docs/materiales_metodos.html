@@ -218,7 +218,7 @@
         <section id="materiales-1" class="level2" style="scroll-margin-top: 100px;">
           <h2>Elaboración de etiquetas</h2>
           
-          <p>Para la identificación eficiente de los tratamientos, se elaboraron etiquetas mediante el paquete <strong>huito</strong> de <strong>R</strong>, una herramienta de código abierto que permite generar etiquetas agrícolas reproducibles y personalizables por capas. Previamente, se organizó la libreta de campo utilizando la plataforma interactiva <strong>Tarpuy</strong>, que facilitó el planeamiento experimental. La información correspondiente a los tratamientos (número, variedad, dosis de infusión de canela, fecha de siembra y observaciones relevantes) fue registrada en una hoja de cálculo de Google Sheets, la cual fue cargada al entorno de R mediante el paquete <strong>googlesheets4</strong>.</p>
+          <p>Para la identificación eficiente de los tratamientos, se elaboraron etiquetas mediante el paquete <strong style="color: red;">huito</strong> de <strong style="color: red;">R</strong>, una herramienta de código abierto que permite generar etiquetas agrícolas reproducibles y personalizables por capas. Previamente, se organizó la libreta de campo utilizando la plataforma interactiva <strong style="color: red;">Tarpuy</strong>, que facilitó el planeamiento experimental. La información correspondiente a los tratamientos (número, variedad, dosis de infusión de canela, fecha de inicio y observaciones relevantes) fue registrada en una hoja de cálculo de Google Sheets, la cual fue cargada al entorno de R mediante el paquete <strong style="color: red;">googlesheets4</strong>.</p>
           
           <p>Durante la elaboración de las etiquetas, se incorporaron imágenes referenciales obtenidas de internet, tales como logotipos  de la universidad, asimismo se mencionó las variedades de lechuga (criolla y morada), las dosis de canela utilizadas, y una escala de medición. Estas etiquetas se imprimieron y colocaron en los recipientes de germinación, lo que permitió una identificación clara, estandarizada y funcional de las unidades experimentales, facilitando la organización y el seguimiento del experimento.</p>
           
@@ -232,8 +232,9 @@
           <section id="materiales-2" class="level3" style="scroll-margin-top: 100px;">
             <h2 class="anchored" data-anchor-id="materiales">Materiales</h2>
             <ul>
-              <li>Semillas de lechuga morada y lechuga criolla (verde)</li>
-              <li>Canela molida</li>
+              <li>Semillas de lechuga morada (<em>Lactuca sativa</em> L.)</li>
+              <li>Semillas de lechuga criolla (<em>Lactuca sativa</em> L.)</li>
+              <li>Canela molida (<em>Cinnamomum</em> sp.)</li>
               <li>Agua destilada estéril</li>
               <li>Vasos o frascos para imbibición</li>
               <li>Tapers transparentes con tapa (bandejas de germinación)</li>
@@ -292,8 +293,6 @@
         <section id="materiales-5" class="level2" style="scroll-margin-top: 100px;">
           <h2 class="anchored" data-anchor-id="escarificación-mecánica">Tratamiento de imbibición</h2>
           <p>Una vez filtradas, las infusiones fueron utilizadas para el tratamiento de imbibición de las semillas. Las semillas de ambas variedades se colocaron en vasos con las respectivas soluciones, y permanecieron en remojo durante 8 horas a temperatura ambiente. Este proceso permitió la absorción inicial de agua e ingredientes activos contenidos en las infusiones, previo al proceso de germinación.</p>
-            
-          <P>Las mezclas se dejaron reposar hasta enfriarse a temperatura ambiente. Posteriormente, se filtraron con un colador fino para retirar los residuos sólidos de canela, dado que el tamaño pequeño de las semillas requería una solución libre de partículas para facilitar el conteo y la siembra.</P>
           <div class="quarto-figure quarto-figure-center" style="border: 0px solid black; height: auto; width: 70%;margin: auto;">
             <figure class="figure">
               <p><img src="images/pasos2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="100%"></p>
@@ -320,7 +319,7 @@
           <div class="quarto-figure quarto-figure-center" style="border: 0px solid black; height: auto; width: 70%;margin: auto; margin-bottom: 2%;">
             <figure class="figure">
               <img src="images/diseño.png" class="img-fluid figure-img">
-              <figcaption><strong>Figura 8.</strong> <em>Distribución del diseño</em></figcaption>
+              <figcaption><strong>Figura 8.</strong> <em>Diseño experimental</em></figcaption>
             </figure>
           </div>
         </section>
@@ -333,8 +332,16 @@
         </section>
         <section id="materiales-8" class="level2" style="scroll-margin-top: 100px;">
           <h2 class="anchored" data-anchor-id="evaluación-y-análisis-de-datos">Condiciones de germinación y evaluación</h2>
-          <p>Los tappers se almacenaron en condiciones ambientales dentro del área de trabajo del laboratorio. Durante un periodo de siete días, se monitoreó el proceso de germinación diariamente. Se aseguró la humedad constante del sustrato (papel toalla) mediante la adición de agua destilada cuando fue necesario.</p>
-          <p>Se consideró como semilla germinada aquella que presentó la emergencia visible de la radícula. Los datos fueron registrados sistemáticamente en una hoja de cálculo de Google Sheets, para su posterior procesamiento estadístico con el paquete GerminaR (Lozano et al., 2019), especializado en el análisis de variables relacionadas con la germinación.</p>
+          <p>Los tappers se almacenaron en condiciones ambientales dentro del área de trabajo del laboratorio de biología molecular de plantas. Durante un periodo de siete días, se monitoreó el proceso de germinación diariamente. Se aseguró la humedad constante del sustrato (papel toalla) mediante la adición de agua destilada cuando fue necesario.</p>
+
+          <p>Se consideró como semilla germinada aquella que presentó la emergencia visible de la radícula. Los datos fueron registrados sistemáticamente en una hoja de cálculo de Google Sheets, para su posterior procesamiento estadístico con el paquete <strong style="color: red;">GerminaR</strong> (Lozano et al., 2019), especializado en el análisis de variables relacionadas con la germinación.</p>
+          <div class="quarto-figure quarto-figure-center" style="border: 0px solid black; height: auto; width: 70%;margin: auto;">
+            <figure class="figure">
+              <p><img src="images/toma_datos.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="100%"></p>
+              <figcaption><strong>Figura 9.</strong> <strong> <em>A)</em></strong> <em>Condiciones de evaluación.</em> <strong> <em>B)</em></strong> <em>Hoja de cálculo de las evaluaciones por día.</em></figcaption>
+            </figure>
+          </div>
+          
         </section>
       </section>
     </main> <!-- /main -->
